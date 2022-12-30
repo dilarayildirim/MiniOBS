@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4c034f20941432ea8b9c6c3e7ca3d00" Name="Diagram1">
+        <EntityTypeShape EntityType="MiniOBSModel.Ders" Width="1.5" PointX="1.125" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MiniOBSModel.Ogrenci" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MiniOBSModel.OgrenciDers" Width="1.5" PointX="4.625" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MiniOBSModel.OgrenciNot" Width="1.5" PointX="6.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MiniOBSModel.Sinif" Width="1.5" PointX="0.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MiniOBSModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="MiniOBSModel.FK_OgrenciDers_Ders" ManuallyRouted="false" />
+        <AssociationConnector Association="MiniOBSModel.FK_OgrenciNot_Ders" ManuallyRouted="false" />
+        <AssociationConnector Association="MiniOBSModel.FK_Ogrenci_Sinif" ManuallyRouted="false" />
+        <AssociationConnector Association="MiniOBSModel.FK_OgrenciDers_Ogrenci" ManuallyRouted="false" />
+        <AssociationConnector Association="MiniOBSModel.FK_OgrenciNot_Ogrenci" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MiniOBSModel.vOgrenci" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="MiniOBSModel.vOgrenciDers" Width="1.5" PointX="8.375" PointY="4.75" />
+        <EntityTypeShape EntityType="MiniOBSModel.vOgrenciNot" Width="1.5" PointX="8.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

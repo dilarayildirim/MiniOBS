@@ -1,0 +1,598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MiniOBSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ders">
+          <Key>
+            <PropertyRef Name="DersID" />
+          </Key>
+          <Property Name="DersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DersAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ogrenci">
+          <Key>
+            <PropertyRef Name="OgrenciID" />
+          </Key>
+          <Property Name="OgrenciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrenciNo" Type="nchar" MaxLength="10" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumTarihi" Type="datetime" />
+          <Property Name="Cinsiyet" Type="nchar" MaxLength="5" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+          <Property Name="Resim" Type="varbinary(max)" />
+          <Property Name="SinifId" Type="int" />
+        </EntityType>
+        <EntityType Name="OgrenciDers">
+          <Key>
+            <PropertyRef Name="OgrenciDersID" />
+          </Key>
+          <Property Name="OgrenciDersID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrenciId" Type="int" Nullable="false" />
+          <Property Name="DersId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OgrenciNot">
+          <Key>
+            <PropertyRef Name="OgrenciNotID" />
+          </Key>
+          <Property Name="OgrenciNotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrenciId" Type="int" Nullable="false" />
+          <Property Name="DersId" Type="int" Nullable="false" />
+          <Property Name="SinavTuru" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SinavNotu" Type="nchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sinif">
+          <Key>
+            <PropertyRef Name="SinifID" />
+          </Key>
+          <Property Name="SinifID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SinifAd" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MiniOBS.dbo.vOgrenci' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vOgrenci">
+          <Key>
+            <PropertyRef Name="OgrenciID" />
+          </Key>
+          <Property Name="OgrenciID" Type="int" Nullable="false" />
+          <Property Name="OgrenciNo" Type="nchar" MaxLength="10" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumTarihi" Type="datetime" />
+          <Property Name="Cinsiyet" Type="nchar" MaxLength="5" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+          <Property Name="Resim" Type="varbinary(max)" />
+          <Property Name="SinifId" Type="int" />
+          <Property Name="SinifAd" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MiniOBS.dbo.vOgrenciDers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vOgrenciDers">
+          <Key>
+            <PropertyRef Name="OgrenciDersID" />
+            <PropertyRef Name="OgrenciId" />
+            <PropertyRef Name="DersId" />
+            <PropertyRef Name="DersAd" />
+          </Key>
+          <Property Name="OgrenciDersID" Type="int" Nullable="false" />
+          <Property Name="OgrenciId" Type="int" Nullable="false" />
+          <Property Name="OgrenciNo" Type="nchar" MaxLength="10" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="DersId" Type="int" Nullable="false" />
+          <Property Name="DersAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SinifId" Type="int" />
+          <Property Name="SinifAd" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MiniOBS.dbo.vOgrenciNot' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vOgrenciNot">
+          <Key>
+            <PropertyRef Name="OgrenciNotID" />
+            <PropertyRef Name="OgrenciId" />
+            <PropertyRef Name="DersId" />
+            <PropertyRef Name="DersAd" />
+            <PropertyRef Name="SinavTuru" />
+            <PropertyRef Name="SinavNotu" />
+          </Key>
+          <Property Name="OgrenciNotID" Type="int" Nullable="false" />
+          <Property Name="OgrenciId" Type="int" Nullable="false" />
+          <Property Name="OgrenciNo" Type="nchar" MaxLength="10" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="DersId" Type="int" Nullable="false" />
+          <Property Name="DersAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SinavTuru" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SinavNotu" Type="nchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Ogrenci_Sinif">
+          <End Role="Sinif" Type="Self.Sinif" Multiplicity="0..1" />
+          <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sinif">
+              <PropertyRef Name="SinifID" />
+            </Principal>
+            <Dependent Role="Ogrenci">
+              <PropertyRef Name="SinifId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgrenciDers_Ders">
+          <End Role="Ders" Type="Self.Ders" Multiplicity="1" />
+          <End Role="OgrenciDers" Type="Self.OgrenciDers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ders">
+              <PropertyRef Name="DersID" />
+            </Principal>
+            <Dependent Role="OgrenciDers">
+              <PropertyRef Name="DersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgrenciDers_Ogrenci">
+          <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="1" />
+          <End Role="OgrenciDers" Type="Self.OgrenciDers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenci">
+              <PropertyRef Name="OgrenciID" />
+            </Principal>
+            <Dependent Role="OgrenciDers">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgrenciNot_Ders">
+          <End Role="Ders" Type="Self.Ders" Multiplicity="1" />
+          <End Role="OgrenciNot" Type="Self.OgrenciNot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ders">
+              <PropertyRef Name="DersID" />
+            </Principal>
+            <Dependent Role="OgrenciNot">
+              <PropertyRef Name="DersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgrenciNot_Ogrenci">
+          <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="1" />
+          <End Role="OgrenciNot" Type="Self.OgrenciNot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenci">
+              <PropertyRef Name="OgrenciID" />
+            </Principal>
+            <Dependent Role="OgrenciNot">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MiniOBSModelStoreContainer">
+          <EntitySet Name="Ders" EntityType="Self.Ders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OgrenciDers" EntityType="Self.OgrenciDers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OgrenciNot" EntityType="Self.OgrenciNot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sinif" EntityType="Self.Sinif" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vOgrenci" EntityType="Self.vOgrenci" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vOgrenci].[OgrenciID] AS [OgrenciID], 
+    [vOgrenci].[OgrenciNo] AS [OgrenciNo], 
+    [vOgrenci].[Ad] AS [Ad], 
+    [vOgrenci].[Soyad] AS [Soyad], 
+    [vOgrenci].[DogumTarihi] AS [DogumTarihi], 
+    [vOgrenci].[Cinsiyet] AS [Cinsiyet], 
+    [vOgrenci].[Telefon] AS [Telefon], 
+    [vOgrenci].[Resim] AS [Resim], 
+    [vOgrenci].[SinifId] AS [SinifId], 
+    [vOgrenci].[SinifAd] AS [SinifAd]
+    FROM [dbo].[vOgrenci] AS [vOgrenci]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vOgrenciDers" EntityType="Self.vOgrenciDers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vOgrenciDers].[OgrenciDersID] AS [OgrenciDersID], 
+    [vOgrenciDers].[OgrenciId] AS [OgrenciId], 
+    [vOgrenciDers].[OgrenciNo] AS [OgrenciNo], 
+    [vOgrenciDers].[Ad] AS [Ad], 
+    [vOgrenciDers].[Soyad] AS [Soyad], 
+    [vOgrenciDers].[DersId] AS [DersId], 
+    [vOgrenciDers].[DersAd] AS [DersAd], 
+    [vOgrenciDers].[SinifId] AS [SinifId], 
+    [vOgrenciDers].[SinifAd] AS [SinifAd]
+    FROM [dbo].[vOgrenciDers] AS [vOgrenciDers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vOgrenciNot" EntityType="Self.vOgrenciNot" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vOgrenciNot].[OgrenciNotID] AS [OgrenciNotID], 
+    [vOgrenciNot].[OgrenciId] AS [OgrenciId], 
+    [vOgrenciNot].[OgrenciNo] AS [OgrenciNo], 
+    [vOgrenciNot].[Ad] AS [Ad], 
+    [vOgrenciNot].[Soyad] AS [Soyad], 
+    [vOgrenciNot].[DersId] AS [DersId], 
+    [vOgrenciNot].[DersAd] AS [DersAd], 
+    [vOgrenciNot].[SinavTuru] AS [SinavTuru], 
+    [vOgrenciNot].[SinavNotu] AS [SinavNotu]
+    FROM [dbo].[vOgrenciNot] AS [vOgrenciNot]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Ogrenci_Sinif" Association="Self.FK_Ogrenci_Sinif">
+            <End Role="Sinif" EntitySet="Sinif" />
+            <End Role="Ogrenci" EntitySet="Ogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgrenciDers_Ders" Association="Self.FK_OgrenciDers_Ders">
+            <End Role="Ders" EntitySet="Ders" />
+            <End Role="OgrenciDers" EntitySet="OgrenciDers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgrenciDers_Ogrenci" Association="Self.FK_OgrenciDers_Ogrenci">
+            <End Role="Ogrenci" EntitySet="Ogrenci" />
+            <End Role="OgrenciDers" EntitySet="OgrenciDers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgrenciNot_Ders" Association="Self.FK_OgrenciNot_Ders">
+            <End Role="Ders" EntitySet="Ders" />
+            <End Role="OgrenciNot" EntitySet="OgrenciNot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgrenciNot_Ogrenci" Association="Self.FK_OgrenciNot_Ogrenci">
+            <End Role="Ogrenci" EntitySet="Ogrenci" />
+            <End Role="OgrenciNot" EntitySet="OgrenciNot" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MiniOBSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ders">
+          <Key>
+            <PropertyRef Name="DersID" />
+          </Key>
+          <Property Name="DersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DersAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OgrenciDers" Relationship="Self.FK_OgrenciDers_Ders" FromRole="Ders" ToRole="OgrenciDers" />
+          <NavigationProperty Name="OgrenciNot" Relationship="Self.FK_OgrenciNot_Ders" FromRole="Ders" ToRole="OgrenciNot" />
+        </EntityType>
+        <EntityType Name="Ogrenci">
+          <Key>
+            <PropertyRef Name="OgrenciID" />
+          </Key>
+          <Property Name="OgrenciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrenciNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="3" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SinifId" Type="Int32" />
+          <NavigationProperty Name="Sinif" Relationship="Self.FK_Ogrenci_Sinif" FromRole="Ogrenci" ToRole="Sinif" />
+          <NavigationProperty Name="OgrenciDers" Relationship="Self.FK_OgrenciDers_Ogrenci" FromRole="Ogrenci" ToRole="OgrenciDers" />
+          <NavigationProperty Name="OgrenciNot" Relationship="Self.FK_OgrenciNot_Ogrenci" FromRole="Ogrenci" ToRole="OgrenciNot" />
+        </EntityType>
+        <EntityType Name="OgrenciDers">
+          <Key>
+            <PropertyRef Name="OgrenciDersID" />
+          </Key>
+          <Property Name="OgrenciDersID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrenciId" Type="Int32" Nullable="false" />
+          <Property Name="DersId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ders" Relationship="Self.FK_OgrenciDers_Ders" FromRole="OgrenciDers" ToRole="Ders" />
+          <NavigationProperty Name="Ogrenci" Relationship="Self.FK_OgrenciDers_Ogrenci" FromRole="OgrenciDers" ToRole="Ogrenci" />
+        </EntityType>
+        <EntityType Name="OgrenciNot">
+          <Key>
+            <PropertyRef Name="OgrenciNotID" />
+          </Key>
+          <Property Name="OgrenciNotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrenciId" Type="Int32" Nullable="false" />
+          <Property Name="DersId" Type="Int32" Nullable="false" />
+          <Property Name="SinavTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SinavNotu" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ders" Relationship="Self.FK_OgrenciNot_Ders" FromRole="OgrenciNot" ToRole="Ders" />
+          <NavigationProperty Name="Ogrenci" Relationship="Self.FK_OgrenciNot_Ogrenci" FromRole="OgrenciNot" ToRole="Ogrenci" />
+        </EntityType>
+        <EntityType Name="Sinif">
+          <Key>
+            <PropertyRef Name="SinifID" />
+          </Key>
+          <Property Name="SinifID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SinifAd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ogrenci" Relationship="Self.FK_Ogrenci_Sinif" FromRole="Sinif" ToRole="Ogrenci" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_OgrenciDers_Ders">
+          <End Role="Ders" Type="Self.Ders" Multiplicity="1" />
+          <End Role="OgrenciDers" Type="Self.OgrenciDers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ders">
+              <PropertyRef Name="DersID" />
+            </Principal>
+            <Dependent Role="OgrenciDers">
+              <PropertyRef Name="DersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgrenciNot_Ders">
+          <End Role="Ders" Type="Self.Ders" Multiplicity="1" />
+          <End Role="OgrenciNot" Type="Self.OgrenciNot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ders">
+              <PropertyRef Name="DersID" />
+            </Principal>
+            <Dependent Role="OgrenciNot">
+              <PropertyRef Name="DersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ogrenci_Sinif">
+          <End Role="Sinif" Type="Self.Sinif" Multiplicity="0..1" />
+          <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sinif">
+              <PropertyRef Name="SinifID" />
+            </Principal>
+            <Dependent Role="Ogrenci">
+              <PropertyRef Name="SinifId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgrenciDers_Ogrenci">
+          <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="1" />
+          <End Role="OgrenciDers" Type="Self.OgrenciDers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenci">
+              <PropertyRef Name="OgrenciID" />
+            </Principal>
+            <Dependent Role="OgrenciDers">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OgrenciNot_Ogrenci">
+          <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="1" />
+          <End Role="OgrenciNot" Type="Self.OgrenciNot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenci">
+              <PropertyRef Name="OgrenciID" />
+            </Principal>
+            <Dependent Role="OgrenciNot">
+              <PropertyRef Name="OgrenciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MiniOBSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ders" EntityType="Self.Ders" />
+          <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" />
+          <EntitySet Name="OgrenciDers" EntityType="Self.OgrenciDers" />
+          <EntitySet Name="OgrenciNot" EntityType="Self.OgrenciNot" />
+          <EntitySet Name="Sinif" EntityType="Self.Sinif" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_OgrenciDers_Ders" Association="Self.FK_OgrenciDers_Ders">
+            <End Role="Ders" EntitySet="Ders" />
+            <End Role="OgrenciDers" EntitySet="OgrenciDers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgrenciNot_Ders" Association="Self.FK_OgrenciNot_Ders">
+            <End Role="Ders" EntitySet="Ders" />
+            <End Role="OgrenciNot" EntitySet="OgrenciNot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ogrenci_Sinif" Association="Self.FK_Ogrenci_Sinif">
+            <End Role="Sinif" EntitySet="Sinif" />
+            <End Role="Ogrenci" EntitySet="Ogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgrenciDers_Ogrenci" Association="Self.FK_OgrenciDers_Ogrenci">
+            <End Role="Ogrenci" EntitySet="Ogrenci" />
+            <End Role="OgrenciDers" EntitySet="OgrenciDers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OgrenciNot_Ogrenci" Association="Self.FK_OgrenciNot_Ogrenci">
+            <End Role="Ogrenci" EntitySet="Ogrenci" />
+            <End Role="OgrenciNot" EntitySet="OgrenciNot" />
+          </AssociationSet>
+          <EntitySet Name="vOgrenci" EntityType="MiniOBSModel.vOgrenci" />
+          <EntitySet Name="vOgrenciDers" EntityType="MiniOBSModel.vOgrenciDers" />
+          <EntitySet Name="vOgrenciNot" EntityType="MiniOBSModel.vOgrenciNot" />
+        </EntityContainer>
+        <EntityType Name="vOgrenci">
+          <Key>
+            <PropertyRef Name="OgrenciID" />
+          </Key>
+          <Property Name="OgrenciID" Type="Int32" Nullable="false" />
+          <Property Name="OgrenciNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="3" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SinifId" Type="Int32" />
+          <Property Name="SinifAd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vOgrenciDers">
+          <Key>
+            <PropertyRef Name="OgrenciDersID" />
+            <PropertyRef Name="OgrenciId" />
+            <PropertyRef Name="DersId" />
+            <PropertyRef Name="DersAd" />
+          </Key>
+          <Property Name="OgrenciDersID" Type="Int32" Nullable="false" />
+          <Property Name="OgrenciId" Type="Int32" Nullable="false" />
+          <Property Name="OgrenciNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DersId" Type="Int32" Nullable="false" />
+          <Property Name="DersAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SinifId" Type="Int32" />
+          <Property Name="SinifAd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vOgrenciNot">
+          <Key>
+            <PropertyRef Name="OgrenciNotID" />
+            <PropertyRef Name="OgrenciId" />
+            <PropertyRef Name="DersId" />
+            <PropertyRef Name="DersAd" />
+            <PropertyRef Name="SinavTuru" />
+            <PropertyRef Name="SinavNotu" />
+          </Key>
+          <Property Name="OgrenciNotID" Type="Int32" Nullable="false" />
+          <Property Name="OgrenciId" Type="Int32" Nullable="false" />
+          <Property Name="OgrenciNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DersId" Type="Int32" Nullable="false" />
+          <Property Name="DersAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SinavTuru" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SinavNotu" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MiniOBSModelStoreContainer" CdmEntityContainer="MiniOBSEntities">
+          <EntitySetMapping Name="Ders">
+            <EntityTypeMapping TypeName="MiniOBSModel.Ders">
+              <MappingFragment StoreEntitySet="Ders">
+                <ScalarProperty Name="DersID" ColumnName="DersID" />
+                <ScalarProperty Name="DersAd" ColumnName="DersAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ogrenci">
+            <EntityTypeMapping TypeName="MiniOBSModel.Ogrenci">
+              <MappingFragment StoreEntitySet="Ogrenci">
+                <ScalarProperty Name="OgrenciID" ColumnName="OgrenciID" />
+                <ScalarProperty Name="OgrenciNo" ColumnName="OgrenciNo" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="SinifId" ColumnName="SinifId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OgrenciDers">
+            <EntityTypeMapping TypeName="MiniOBSModel.OgrenciDers">
+              <MappingFragment StoreEntitySet="OgrenciDers">
+                <ScalarProperty Name="OgrenciDersID" ColumnName="OgrenciDersID" />
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="DersId" ColumnName="DersId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OgrenciNot">
+            <EntityTypeMapping TypeName="MiniOBSModel.OgrenciNot">
+              <MappingFragment StoreEntitySet="OgrenciNot">
+                <ScalarProperty Name="OgrenciNotID" ColumnName="OgrenciNotID" />
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="DersId" ColumnName="DersId" />
+                <ScalarProperty Name="SinavTuru" ColumnName="SinavTuru" />
+                <ScalarProperty Name="SinavNotu" ColumnName="SinavNotu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sinif">
+            <EntityTypeMapping TypeName="MiniOBSModel.Sinif">
+              <MappingFragment StoreEntitySet="Sinif">
+                <ScalarProperty Name="SinifID" ColumnName="SinifID" />
+                <ScalarProperty Name="SinifAd" ColumnName="SinifAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MiniOBSModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vOgrenci">
+            <EntityTypeMapping TypeName="MiniOBSModel.vOgrenci">
+              <MappingFragment StoreEntitySet="vOgrenci">
+                <ScalarProperty Name="SinifAd" ColumnName="SinifAd" />
+                <ScalarProperty Name="SinifId" ColumnName="SinifId" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="OgrenciNo" ColumnName="OgrenciNo" />
+                <ScalarProperty Name="OgrenciID" ColumnName="OgrenciID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vOgrenciDers">
+            <EntityTypeMapping TypeName="MiniOBSModel.vOgrenciDers">
+              <MappingFragment StoreEntitySet="vOgrenciDers">
+                <ScalarProperty Name="SinifAd" ColumnName="SinifAd" />
+                <ScalarProperty Name="SinifId" ColumnName="SinifId" />
+                <ScalarProperty Name="DersAd" ColumnName="DersAd" />
+                <ScalarProperty Name="DersId" ColumnName="DersId" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="OgrenciNo" ColumnName="OgrenciNo" />
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="OgrenciDersID" ColumnName="OgrenciDersID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vOgrenciNot">
+            <EntityTypeMapping TypeName="MiniOBSModel.vOgrenciNot">
+              <MappingFragment StoreEntitySet="vOgrenciNot">
+                <ScalarProperty Name="SinavNotu" ColumnName="SinavNotu" />
+                <ScalarProperty Name="SinavTuru" ColumnName="SinavTuru" />
+                <ScalarProperty Name="DersAd" ColumnName="DersAd" />
+                <ScalarProperty Name="DersId" ColumnName="DersId" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="OgrenciNo" ColumnName="OgrenciNo" />
+                <ScalarProperty Name="OgrenciId" ColumnName="OgrenciId" />
+                <ScalarProperty Name="OgrenciNotID" ColumnName="OgrenciNotID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
